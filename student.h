@@ -3,36 +3,34 @@
 
 #include <iostream>
 #include <vector>
-
 using namespace std;
 
 class Student {
 public:
     int id;
-    string name, department;
+    string name;
+    string department;
+    vector<int> courseIDs; // To store the IDs of courses the student is enrolled in
 
-    Student(int sid, string sname, string sdept) {
-        id = sid;
-        name = sname;
-        department = sdept;
-    }
+    Student(int studentID, string studentName, string studentDepartment)
+        : id(studentID), name(studentName), department(studentDepartment) {}
 
     void display() {
-        cout << "Student ID: " << id << " | Name: " << name 
-             << " | Department: " << department << endl;
+        cout << "Student ID: " << id << " | Name: " << name << " | Department: " << department << endl;
+        cout << "Enrolled Courses: ";
+        if (courseIDs.empty()) {
+            cout << "No courses enrolled.\n";
+        } else {
+            for (int courseID : courseIDs) {
+                cout << courseID << " ";
+            }
+            cout << endl;
+        }
     }
-};
 
-class StudentManager {
-private:
-    vector<Student> students;
-
-public:
-    void addStudent(int id, string name, string department);
-    void showAllStudents();
-    Student* searchStudent(int id);
-    void deleteStudent(int id);
-    void updateStudent(int id, string newName, string newDept);
+    void assignCourse(int courseID) {
+        courseIDs.push_back(courseID);  // Add course to the student's course list
+    }
 };
 
 #endif

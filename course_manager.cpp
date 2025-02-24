@@ -25,3 +25,30 @@ void CourseManager::deleteCourse(int id) {
     }
     cout << "❌ Course Not Found!\n";
 }
+
+void CourseManager::assignStudentToCourse(int studentID, int courseID, vector<Student>& allStudents) {
+    for (auto &student : allStudents) {
+        if (student.id == studentID) {
+            student.assignCourse(courseID);  // Assign the course to the student
+            cout << "✅ Student " << student.name << " has been enrolled in Course " << courseID << "!\n";
+            return;
+        }
+    }
+    cout << "❌ Student Not Found!\n";
+}
+
+void CourseManager::showStudentsInCourse(int courseID, vector<Student>& allStudents) {
+    bool found = false;
+    for (auto &student : allStudents) {
+        for (int course : student.courseIDs) {
+            if (course == courseID) {
+                cout << "Student ID: " << student.id << " | Name: " << student.name << endl;
+                found = true;
+                break;
+            }
+        }
+    }
+    if (!found) {
+        cout << "❌ No students are enrolled in this course.\n";
+    }
+}

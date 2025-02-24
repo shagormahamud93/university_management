@@ -1,13 +1,14 @@
-#include "student.h"
+#include "student_manager.h"
+#include <iostream>
 
-void StudentManager::addStudent(int id, string name, string department) {
+void StudentManager::addStudent(int id, std::string name, std::string department) {
     students.push_back(Student(id, name, department));
-    cout << "✅ Student Added Successfully!\n";
+    std::cout << "✅ Student Added Successfully!\n";
 }
 
 void StudentManager::showAllStudents() {
     if (students.empty()) {
-        cout << "⚠️ No students available!\n";
+        std::cout << "⚠️ No students available!\n";
         return;
     }
     for (auto &s : students) {
@@ -28,20 +29,20 @@ void StudentManager::deleteStudent(int id) {
     for (auto it = students.begin(); it != students.end(); it++) {
         if (it->id == id) {
             students.erase(it);
-            cout << "✅ Student Deleted Successfully!\n";
+            std::cout << "✅ Student Deleted Successfully!\n";
             return;
         }
     }
-    cout << "❌ Student Not Found!\n";
+    std::cout << "❌ Student Not Found!\n";
 }
 
-void StudentManager::updateStudent(int id, string newName, string newDept) {
+void StudentManager::updateStudent(int id, std::string newName, std::string newDept) {
     Student* s = searchStudent(id);
     if (s) {
         s->name = newName;
         s->department = newDept;
-        cout << "✅ Student Updated Successfully!\n";
+        std::cout << "✅ Student Updated Successfully!\n";
     } else {
-        cout << "❌ Student Not Found!\n";
+        std::cout << "❌ Student Not Found!\n";
     }
 }

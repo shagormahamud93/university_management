@@ -2,6 +2,7 @@
 #include "student.h"
 #include "teacher_manager.h"
 #include "course_manager.h"
+#include "student_manager.h"
 
 using namespace std;
 
@@ -19,7 +20,9 @@ void menu()
     cout << "9. Add Course\n";
     cout << "10. Show All Courses\n";
     cout << "11. Delete Course\n";
-    cout << "12. Exit\n";
+    cout << "12. Assign Student to Course\n";  // ✅ New option for Assigning Student to Course
+    cout << "13. Show Students in a Course\n";  // ✅ New option to Show Students in Course
+    cout << "14. Exit\n";
     cout << "Choose an option: ";
 }
 
@@ -29,8 +32,10 @@ int main()
     TeacherManager tm;
     CourseManager cm;
 
-    int choice, id, teacherID;
+    int choice, id, teacherID, courseID, studentID;
     string name, department;
+
+    vector<Student> allStudents;  // Store all students for easy access
 
     while (true)
     {
@@ -48,6 +53,7 @@ int main()
             cout << "Enter Department: ";
             getline(cin, department);
             sm.addStudent(id, name, department);
+            allStudents.push_back(Student(id, name, department));
             break;
         case 2:
             sm.showAllStudents();
@@ -110,15 +116,27 @@ int main()
             cin >> teacherID;
             cm.addCourse(id, name, teacherID);
             break;
-        case 10: // Show all courses
+        case 10:
             cm.showCourses();
             break;
-        case 11: // Delete course
+        case 11:
             cout << "Enter Course ID to delete: ";
             cin >> id;
             cm.deleteCourse(id);
             break;
-        case 12:
+        case 12: // Assign Student to Course
+            cout << "Enter Student ID: ";
+            cin >> studentID;
+            cout << "Enter Course ID: ";
+            cin >> courseID;
+            cm.assignStudentToCourse(studentID, courseID, allStudents);
+            break;
+        case 13: // Show Students in a Course
+            cout << "Enter Course ID to see enrolled students: ";
+            cin >> courseID;
+            cm.showStudentsInCourse(courseID, allStudents);
+            break;
+        case 14:
             return 0;
         default:
             cout << "⚠️ Invalid choice! Please try again.\n";
