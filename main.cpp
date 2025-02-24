@@ -3,6 +3,7 @@
 #include "teacher_manager.h"
 #include "course_manager.h"
 #include "student_manager.h"
+#include "attendance_manager.h"
 
 using namespace std;
 
@@ -20,10 +21,13 @@ void menu()
     cout << "9. Add Course\n";
     cout << "10. Show All Courses\n";
     cout << "11. Delete Course\n";
-    cout << "12. Assign Student to Course\n";  
-    cout << "13. Show Students in a Course\n"; 
+    cout << "12. Assign Student to Course\n";
+    cout << "13. Show Students in a Course\n";
     cout << "14. Remove Student from Course\n";
-    cout << "15. Exit\n";
+    cout << "15. Mark Attendance\n";
+    cout << "16. Show Student Attendance\n";
+    cout << "17. Show Course Attendance\n";
+    cout << "18. Exit\n";
     cout << "Choose an option: ";
 }
 
@@ -32,11 +36,13 @@ int main()
     StudentManager sm;
     TeacherManager tm;
     CourseManager cm;
+    AttendanceManager am;
 
     int choice, id, teacherID, courseID, studentID;
-    string name, department;
+    string name, department, date;
+    bool status;
 
-    vector<Student> allStudents; // Store all students for easy access
+    vector<Student> allStudents;
 
     while (true)
     {
@@ -65,13 +71,9 @@ int main()
             {
                 Student *s = sm.searchStudent(id);
                 if (s)
-                {
                     s->display();
-                }
                 else
-                {
                     cout << "Student Not Found!\n";
-                }
             }
             break;
         case 4:
@@ -137,7 +139,6 @@ int main()
             cin >> courseID;
             cm.showStudentsInCourse(courseID, allStudents);
             break;
-
         case 14:
             cout << "Enter Student ID: ";
             cin >> studentID;
@@ -145,7 +146,30 @@ int main()
             cin >> courseID;
             cm.removeStudentFromCourse(studentID, courseID, allStudents);
             break;
-        case 15:
+
+        //  Attendance Feature
+        case 15: // Mark Attendance
+            cout << "Enter Student ID: ";
+            cin >> studentID;
+            cout << "Enter Course ID: ";
+            cin >> courseID;
+            cout << "Enter Date (YYYY-MM-DD): ";
+            cin >> date;
+            cout << "Enter Status (1 for Present, 0 for Absent): ";
+            cin >> status;
+            am.markAttendance(studentID, courseID, date, status);
+            break;
+        case 16: // Show Student Attendance
+            cout << "Enter Student ID: ";
+            cin >> studentID;
+            am.showAttendance(studentID);
+            break;
+        case 17: // Show Course Attendance
+            cout << "Enter Course ID: ";
+            cin >> courseID;
+            am.showCourseAttendance(courseID);
+            break;
+        case 18:
             return 0;
         default:
             cout << "Invalid choice! Please try again.\n";
