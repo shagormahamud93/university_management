@@ -1,13 +1,10 @@
-
 #include "teacher_manager.h"
 
-// Add Teacher
 void TeacherManager::addTeacher(int id, string name, string department) {
     teachers.push_back(Teacher(id, name, department));
     cout << "✅ Teacher Added Successfully!\n";
 }
 
-// Show All Teachers
 void TeacherManager::showTeachers() {
     if (teachers.empty()) {
         cout << "⚠️ No teachers available!\n";
@@ -18,7 +15,6 @@ void TeacherManager::showTeachers() {
     }
 }
 
-// Search Teacher by ID
 Teacher* TeacherManager::searchTeacher(int id) {
     for (auto &t : teachers) {
         if (t.id == id) {
@@ -28,7 +24,6 @@ Teacher* TeacherManager::searchTeacher(int id) {
     return nullptr;
 }
 
-// Delete Teacher
 void TeacherManager::deleteTeacher(int id) {
     for (auto it = teachers.begin(); it != teachers.end(); it++) {
         if (it->id == id) {

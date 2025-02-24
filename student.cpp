@@ -1,64 +1,47 @@
 #include "student.h"
 
-void Student::addStudent(int sid, string sname, string sdept) {
-    id = sid;
-    name = sname;
-    department = sdept;
-}
-
-void Student::showStudent() {
-    cout << "ID: " << id << " | Name: " << name << " | Department: " << department << endl;
-}
-
-// StudentManager Methods
 void StudentManager::addStudent(int id, string name, string department) {
-    Student newStudent;
-    newStudent.addStudent(id, name, department);
-    students.push_back(newStudent);
-    cout << "✅ Student added successfully!\n";
+    students.push_back(Student(id, name, department));
+    cout << "✅ Student Added Successfully!\n";
 }
 
 void StudentManager::showAllStudents() {
     if (students.empty()) {
-        cout << "❌ No students found!\n";
+        cout << "⚠️ No students available!\n";
         return;
     }
-    cout << "\n===== Student List =====\n";
-    for (Student s : students) {
-        s.showStudent();
+    for (auto &s : students) {
+        s.display();
     }
 }
 
-void StudentManager::searchStudent(int id) {
-    for (Student s : students) {
+Student* StudentManager::searchStudent(int id) {
+    for (auto &s : students) {
         if (s.id == id) {
-            cout << "✅ Student Found:\n";
-            s.showStudent();
-            return;
+            return &s;
         }
     }
-    cout << "❌ Student not found!\n";
+    return nullptr;
 }
 
 void StudentManager::deleteStudent(int id) {
-    for (auto it = students.begin(); it != students.end(); ++it) {
+    for (auto it = students.begin(); it != students.end(); it++) {
         if (it->id == id) {
             students.erase(it);
-            cout << "✅ Student deleted successfully!\n";
+            cout << "✅ Student Deleted Successfully!\n";
             return;
         }
     }
-    cout << "❌ Student not found!\n";
+    cout << "❌ Student Not Found!\n";
 }
 
 void StudentManager::updateStudent(int id, string newName, string newDept) {
-    for (Student &s : students) {
-        if (s.id == id) {
-            s.name = newName;
-            s.department = newDept;
-            cout << "✅ Student updated successfully!\n";
-            return;
-        }
+    Student* s = searchStudent(id);
+    if (s) {
+        s->name = newName;
+        s->department = newDept;
+        cout << "✅ Student Updated Successfully!\n";
+    } else {
+        cout << "❌ Student Not Found!\n";
     }
-    cout << "❌ Student not found!\n";
 }
