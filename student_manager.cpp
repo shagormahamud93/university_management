@@ -3,12 +3,12 @@
 
 void StudentManager::addStudent(int id, std::string name, std::string department) {
     students.push_back(Student(id, name, department));
-    std::cout << "✅ Student Added Successfully!\n";
+    std::cout << "Student Added Successfully!\n";
 }
 
 void StudentManager::showAllStudents() {
     if (students.empty()) {
-        std::cout << "⚠️ No students available!\n";
+        std::cout << "No students available!\n";
         return;
     }
     for (auto &s : students) {
@@ -29,11 +29,11 @@ void StudentManager::deleteStudent(int id) {
     for (auto it = students.begin(); it != students.end(); it++) {
         if (it->id == id) {
             students.erase(it);
-            std::cout << "✅ Student Deleted Successfully!\n";
+            std::cout << "Student Deleted Successfully!\n";
             return;
         }
     }
-    std::cout << "❌ Student Not Found!\n";
+    std::cout << "Student Not Found!\n";
 }
 
 void StudentManager::updateStudent(int id, std::string newName, std::string newDept) {
@@ -41,8 +41,8 @@ void StudentManager::updateStudent(int id, std::string newName, std::string newD
     if (s) {
         s->name = newName;
         s->department = newDept;
-        std::cout << "✅ Student Updated Successfully!\n";
+        std::cout << "Student Updated Successfully!\n";
     } else {
-        std::cout << "❌ Student Not Found!\n";
+        std::cout << "Student Not Found!\n";
     }
 }

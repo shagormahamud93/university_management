@@ -20,9 +20,10 @@ void menu()
     cout << "9. Add Course\n";
     cout << "10. Show All Courses\n";
     cout << "11. Delete Course\n";
-    cout << "12. Assign Student to Course\n";  // ✅ New option for Assigning Student to Course
-    cout << "13. Show Students in a Course\n";  // ✅ New option to Show Students in Course
-    cout << "14. Exit\n";
+    cout << "12. Assign Student to Course\n";  
+    cout << "13. Show Students in a Course\n"; 
+    cout << "14. Remove Student from Course\n";
+    cout << "15. Exit\n";
     cout << "Choose an option: ";
 }
 
@@ -35,7 +36,7 @@ int main()
     int choice, id, teacherID, courseID, studentID;
     string name, department;
 
-    vector<Student> allStudents;  // Store all students for easy access
+    vector<Student> allStudents; // Store all students for easy access
 
     while (true)
     {
@@ -69,7 +70,7 @@ int main()
                 }
                 else
                 {
-                    cout << "❌ Student Not Found!\n";
+                    cout << "Student Not Found!\n";
                 }
             }
             break;
@@ -132,14 +133,22 @@ int main()
             cm.assignStudentToCourse(studentID, courseID, allStudents);
             break;
         case 13: // Show Students in a Course
-            cout << "Enter Course ID to see enrolled students: ";
+            cout << "Enter Course ID: ";
             cin >> courseID;
             cm.showStudentsInCourse(courseID, allStudents);
             break;
+
         case 14:
+            cout << "Enter Student ID: ";
+            cin >> studentID;
+            cout << "Enter Course ID: ";
+            cin >> courseID;
+            cm.removeStudentFromCourse(studentID, courseID, allStudents);
+            break;
+        case 15:
             return 0;
         default:
-            cout << "⚠️ Invalid choice! Please try again.\n";
+            cout << "Invalid choice! Please try again.\n";
         }
     }
 }
