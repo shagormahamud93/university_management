@@ -12,38 +12,6 @@ using namespace std;
 
 void menu()
 {
-    // cout << "\n===== University Management System =====\n";
-    // cout << "1. Add Student\n";
-    // cout << "2. Show All Students\n";
-    // cout << "3. Search Student by ID\n";
-    // cout << "4. Delete Student\n";
-    // cout << "5. Update Student Info\n";
-    // cout << "\n===== Add Teacher Functionaily =====\n";
-    // cout << "6. Add Teacher\n";
-    // cout << "7. Show All Teachers\n";
-    // cout << "8. Delete Teacher\n";
-    // cout << "\n===== Add Course Functionaily =====\n";
-    // cout << "9. Add Course\n";
-    // cout << "10. Show All Courses\n";
-    // cout << "11. Delete Course\n";
-    // cout << "\n===== Assign Student Functionaily =====\n";
-    // cout << "12. Assign Student to Course\n";
-    // cout << "13. Show Students in a Course\n";
-    // cout << "14. Remove Student from Course\n";
-    // cout << "\n===== Attendance Functionaily =====\n";
-    // cout << "15. Mark Attendance\n";
-    // cout << "16. Show Student Attendance\n";
-    // cout << "17. Show Course Attendance\n";
-    // cout << "\n===== Department Functionaily =====\n";
-    // cout << "18. Add Department\n";
-    // cout << "19. Show All Departments\n";
-    // cout << "20. Delete Department\n";
-    // cout << "\n===== Exam Functionaily =====\n";
-    // cout << "21. Add Exam\n";
-    // cout << "22. Show All Exams\n";
-    // cout << "23. Delete Exam\n";
-    // cout << "24. Exit\n";
-    // cout << "Choose an option: ";
     cout << "\n===== University Management System =====\n";
     cout << "1. Add Student\n";
     cout << "2. Show All Students\n";
