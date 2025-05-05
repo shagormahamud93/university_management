@@ -109,11 +109,15 @@ int main()
          case 4:
             cout << "Enter Teacher ID: ";
             cin >> id;
-            cout << "Enter Name: ";
+            cout << "Enter Teacher Name: ";
             cin.ignore();
             getline(cin, name);
             cout << "Enter Department: ";
             getline(cin, department);
+            if (!dm.isDepartmentExists(department)) {
+                cout << "Error: Department does not exist. Please create the department first.\n";
+                break;
+            }
             tm.addTeacher(id, name, department);
             break;
         case 5:
@@ -126,15 +130,19 @@ int main()
             break;
        //Teacher Manage End
 
-         //Student Manage 
+         //Student Management
         case 7:
-            cout << "Enter ID: ";
+            cout << "Enter Student ID: ";
             cin >> id;
-            cout << "Enter Name: ";
+            cout << "Enter Student Name: ";
             cin.ignore();
             getline(cin, name);
             cout << "Enter Department: ";
             getline(cin, department);
+            if (!dm.isDepartmentExists(department)) {
+                cout << "Error: Department does not exist. Please create the department first.\n";
+                break;
+            }
             sm.addStudent(id, name, department);
             allStudents.push_back(Student(id, name, department));
             break;
@@ -178,6 +186,16 @@ int main()
             getline(cin, name);
             cout << "Enter Teacher ID: ";
             cin >> teacherID;
+
+            if (!tm.isTeacherExists(teacherID)) {
+                cout << "Error: Teacher not found.\n";
+                break;
+            }
+
+            if (!dm.isDepartmentExists()) {
+                cout << "Error: Please create at least one department before adding courses.\n";
+                break;
+            }
             cm.addCourse(id, name, teacherID);
             break;
         case 13:

@@ -16,7 +16,7 @@ public:
         name = tname;
         department = tdept;
     }
-
+    int getId() const { return id; }
     void display() {
         cout << "Teacher ID: " << id << " | Name: " << name 
              << " | Department: " << department << endl;
@@ -32,6 +32,7 @@ public:
     void showTeachers();
     Teacher* searchTeacher(int id);
     void deleteTeacher(int id);
+    bool isTeacherExists(int teacherID) const;
 };
 
 #endif

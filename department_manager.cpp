@@ -53,3 +53,16 @@ void DepartmentManager::assignTeacherToDepartment(int departmentID, int teacherI
     }
     cout << "Department not found!" << endl;
 }
+
+bool DepartmentManager::isDepartmentExists(const string& name) const {
+    for (const auto& dept : departments) {
+        if (dept.getName() == name) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool DepartmentManager::isDepartmentExists() const {
+    return !departments.empty();
+}

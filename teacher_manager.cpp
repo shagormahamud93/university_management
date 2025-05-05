@@ -2,12 +2,12 @@
 
 void TeacherManager::addTeacher(int id, string name, string department) {
     teachers.push_back(Teacher(id, name, department));
-    cout << "✅ Teacher Added Successfully!\n";
+    cout << "Teacher Added Successfully!\n";
 }
 
 void TeacherManager::showTeachers() {
     if (teachers.empty()) {
-        cout << "⚠️ No teachers available!\n";
+        cout << " No teachers available!\n";
         return;
     }
     for (auto &t : teachers) {
@@ -28,9 +28,18 @@ void TeacherManager::deleteTeacher(int id) {
     for (auto it = teachers.begin(); it != teachers.end(); it++) {
         if (it->id == id) {
             teachers.erase(it);
-            cout << "✅ Teacher Deleted Successfully!\n";
+            cout << "Teacher Deleted Successfully!\n";
             return;
         }
     }
-    cout << "❌ Teacher Not Found!\n";
+    cout << "Teacher Not Found!\n";
+}
+
+bool TeacherManager::isTeacherExists(int teacherID) const {
+    for (const auto& teacher : teachers) {
+        if (teacher.getId() == teacherID) {
+            return true;
+        }
+    }
+    return false;
 }

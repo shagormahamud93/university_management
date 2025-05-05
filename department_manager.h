@@ -15,6 +15,8 @@ public:
     void showAllDepartments() const;
     void deleteDepartment(int id);
     void assignTeacherToDepartment(int departmentID, int teacherID);
+    bool isDepartmentExists(const string& name) const;
+    bool isDepartmentExists() const; // If needed for empty check, see usage
 };
 
 #endif
