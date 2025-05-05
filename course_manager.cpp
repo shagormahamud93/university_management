@@ -69,3 +69,11 @@ void CourseManager::removeStudentFromCourse(int studentID, int courseID, vector<
     cout << "Student Not Found!\n";
 }
 
+bool CourseManager::courseExists(int id) {
+    for (const auto& course : courses) {
+        if (course.id == id) {
+            return true;
+        }
+    }
+    return false;
+}

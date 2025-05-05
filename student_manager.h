@@ -11,6 +11,7 @@ public:
     Student* searchStudent(int id);
     void deleteStudent(int id);
     void updateStudent(int id, std::string newName, std::string newDept);
+    bool studentExists(int id);
 
 private:
     std::vector<Student> students;  // List to store students

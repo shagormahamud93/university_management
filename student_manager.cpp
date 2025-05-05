@@ -46,3 +46,7 @@ void StudentManager::updateStudent(int id, std::string newName, std::string newD
         std::cout << "Student Not Found!\n";
     }
 }
+
+bool StudentManager::studentExists(int id) {
+    return searchStudent(id) != nullptr;
+}

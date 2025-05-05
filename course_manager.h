@@ -16,6 +16,7 @@ public:
     void deleteCourse(int id);
     void assignStudentToCourse(int studentID, int courseID, vector<Student>& allStudents);
     void showStudentsInCourse(int courseID, vector<Student>& allStudents);
+    bool courseExists(int id);
 
     // Function to remove a student from a course
     void removeStudentFromCourse(int studentID, int courseID, vector<Student>& students);
